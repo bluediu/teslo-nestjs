@@ -20,13 +20,29 @@
 
 ## Project setup
 
-```bash
-$ yarn install
-```
+1. Install dependencies
 
 ```bash
-$ docker-compose up -d
+  $ yarn install
 ```
+
+2. Create a environment configuration file:
+
+```bash
+  touch .env
+```
+
+3. Populate the `.env` file with the required environment variables. Ensure you use secure and appropriate values for the environment.
+
+4. Start Database Engine
+
+```bash
+  $ docker-compose up -d
+```
+
+## Rebuild database (development)
+
+`localhost:<port>/api/seed`
 
 ## Compile and run the project
 
