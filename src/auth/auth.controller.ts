@@ -13,7 +13,7 @@ import { User } from './entities';
 import { UserRoleGuard } from './guards';
 import { AuthService } from './auth.service';
 import { CreateUserDto, LoginUserDto } from './dto';
-import { GetUser, RawHeader, RoleProtected } from './decorators';
+import { Auth, GetUser, RawHeader, RoleProtected } from './decorators';
 import { IValidRoles } from './interfaces';
 
 @Controller('auth')
@@ -63,8 +63,8 @@ export class AuthController {
   }
 
   @Get('private3')
-  @RoleProtected(IValidRoles.superuser, IValidRoles.user)
-  @UseGuards(AuthGuard(), UserRoleGuard)
+  // @Auth()
+  @Auth(IValidRoles.admin)
   privateRouter3(@GetUser() user: User) {
     return {
       ok: true,
