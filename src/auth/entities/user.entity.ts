@@ -1,9 +1,11 @@
+import { Product } from 'src/products/entities';
 import {
   Entity,
   Column,
   BeforeUpdate,
   BeforeInsert,
   PrimaryGeneratedColumn,
+  OneToMany,
 } from 'typeorm';
 
 @Entity('users')
@@ -25,6 +27,9 @@ export class User {
 
   @Column('text', { array: true, default: ['user'] })
   roles: string[];
+
+  @OneToMany(() => Product, (product) => product.user)
+  product: Product;
 
   @BeforeInsert()
   @BeforeUpdate()
